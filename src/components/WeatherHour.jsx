@@ -33,16 +33,13 @@ export default function WeatherHour({ weather }) {
       grouped[date].icon.push(element.weather[0].icon);
       grouped[date].hour.push(formatHour(hour)); // Conversion en AM/PM
     });
-
     setDays(grouped);
-
     // Sélectionner par défaut le premier jour
     const firstDay = Object.keys(grouped)[0];
     setSelectedDay(firstDay);
   }, [weather]);
 
   if (!weather || Object.keys(days).length === 0) return null;
-
   const filteredDay = Object.values(days).filter(
     (value) => value.date === selectedDay
   )[0];
